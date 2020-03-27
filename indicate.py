@@ -17,9 +17,12 @@ def init_somebar():
     os.system(cmd)
 
 def get_ip():
-    response = get('https://api.ipify.org?format=json').text
-    parsed_json = json.loads(response)
-    return parsed_json["ip"]
+    try:
+        response = get('https://api.ipify.org?format=json').text
+        parsed_json = json.loads(response)
+        return parsed_json["ip"]
+    finally:
+        return ""
 
 def main():
     init_somebar()
